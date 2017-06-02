@@ -21,8 +21,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get products_url
-    assert_select '#product_list'
-    assert_select '.list_actions a', :minimum => 3
     assert_response :success
   end
 
@@ -56,13 +54,4 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(@product)
   end
 
-  # ...
-
-  test "should destroy product" do
-    assert_difference('Product.count', -1) do
-      delete product_url(@product)
-    end
-
-    assert_redirected_to products_url
-  end
 end
