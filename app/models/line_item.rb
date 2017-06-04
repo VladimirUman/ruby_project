@@ -7,7 +7,8 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
 class LineItem < ApplicationRecord
-  belongs_to :product
+  belongs_to :order, optional: true
+  belongs_to :product, optional: true
   belongs_to :cart
 
   def total_price
