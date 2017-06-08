@@ -6,15 +6,12 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
-class StoreController < ApplicationController
-  skip_before_action :authorize
-  include CurrentCart
-  before_action :set_cart
-  def index
-    if params[:set_locale]
-      redirect_to store_index_url(locale: params[:set_locale])
-    else
-      @products = Product.order(:title)
-    end
-  end
-end
+#encoding: utf-8
+#I18n.load_path += Dir[Rails.root.join('config/locales/*.{rb,yml}').to_s]
+I18n.default_locale = :en
+#I18n.available_locales = [:en, :uk]
+
+LANGUAGES = [
+  ['English', 'en'],
+  ["Українська", 'uk']
+]
