@@ -1,40 +1,24 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will
  * include all the files listed below.
- * 
+ *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
  * vendor/assets/stylesheets, or any plugin's vendor/assets/stylesheets
  * directory can be referenced here using a relative path.
- * 
+ *
  * You're free to add application-wide styles to this file and they'll appear
  * at the bottom of the compiled file so the styles you add here take
  * precedence over styles defined in any other CSS/SCSS files in this
  * directory. Styles in this file should be added after the last require_*
  * statement. It is generally better to create a new file per style scope.
- * 
- *= require_tree .
+ *
  *= require_self
+ *= require_tree .
+
  */
 
 body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
-#banner {
-  position: relative;
-  min-height: 40px;
-  background: #9c9;
-  padding: 10px;
-  border-bottom: 2px solid;
-  font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
-  text-align: center;
-
-  img {
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 192px;
-  }
-}
 
 #notice {
   color: #000 !important;
@@ -50,7 +34,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 }
 
 #columns {
-  background: #141;
+  background: #F8F8F8;
   display: flex;
 
   #main {
@@ -66,8 +50,8 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
     form, div {
       display: inline;
-    }  
- 
+    }
+
     input {
       font-size: small;
     }
@@ -118,11 +102,11 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 //
 .depot_form {
   fieldset {
-    background: #efe;
+    background: #F8F8F8;
 
     legend {
-      color: #dfd;
-      background: #141;
+      color: #000;
+      background: #F1F1F1;
       font-family: sans-serif;
       padding: 0.2em 1em;
     }
@@ -157,7 +141,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 }
 //
 
-.locale {
-  float: right;
-  margin: -0.25em 0.1em;
-}
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

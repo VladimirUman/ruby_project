@@ -35,6 +35,7 @@ uk:
       empty:       "Очистити кошик"
       checkout:    "Оформити"
       sure:        "Ви впевнені?"
+      total:       "Всього"
 
   store:
     index:

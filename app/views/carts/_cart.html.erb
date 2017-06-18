@@ -1,14 +1,14 @@
 <h2><%= t('.title') %></h2>
-<table>
+<table class="table table-hover">
   <%= render(cart.line_items) %>
 
   <tr class="total_line">
-    <td colspan="2">Total</td>
+    <td colspan="2"><%= t('.total') %></td>
     <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
   </tr>
 
 </table>
-
-<%= button_to t('.checkout'), new_order_path, method: :get %>
-<%= button_to t('.empty'), cart, method: :delete,
-  data: { confirm: t('.sure') } %>
+<div style="float: left; margin-right: 3px">
+  <%= button_to t('.checkout'), new_order_path, method: :get, class: "btn btn-default btn-sm" %>
+  <%= button_to t('.empty'), cart, method: :delete, data: { confirm: t('.sure') }, class: "btn btn-default btn-sm" %>
+</div>

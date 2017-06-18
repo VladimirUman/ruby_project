@@ -30,6 +30,7 @@ en:
       empty:       "Empty cart"
       checkout:    "Checkout"
       sure:        "Are you sure?"
+      total:       "Total"
 
   store:
     index:
