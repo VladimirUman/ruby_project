@@ -7,6 +7,11 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
 Rails.application.routes.draw do
+
+  get 'about' => 'pages#about'
+
+  get 'contacts' => 'pages#contacts'
+
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -25,7 +30,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :line_items
     resources :carts
-    root 'store#index', as: 'store_index', via: :all
+      root 'store#index', as: 'store_index', via: :all
+
   end
 
   # For details on the DSL available within this file, see

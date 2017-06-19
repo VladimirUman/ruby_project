@@ -28,6 +28,8 @@ uk:
       questions:   "Запитання"
       news:        "Новини"
       contact:     "Контакти"
+      aboutus:     "Про нас"
+      catalog:     "Каталог товарів"
 
   carts:
     cart:
@@ -54,3 +56,9 @@ uk:
       submit:       "Залишити замовлення"
 
   thanks:          "Дякуємо за Ваше замовлення"
+
+  pages:
+    about:
+      aboutus:     "Про магазин:"
+    contacts:
+      contact:     "Наші контакти:"

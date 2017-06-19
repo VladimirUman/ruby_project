@@ -22,7 +22,9 @@ en:
       home:        "Home"
       questions:   "Questions"
       news:        "News"
-      contact:     "Contact"
+      contact:     "Contacts"
+      aboutus:     "About us"
+      catalog:     "Catalog"
 
   carts:
     cart:
@@ -49,3 +51,9 @@ en:
       submit:       "Place Order"
 
   thanks:          "Thank you for your order"
+
+  pages:
+    about:
+      aboutus:     "About us:"
+    contacts:
+      contact:     "Contacts:"
