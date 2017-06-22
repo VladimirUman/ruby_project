@@ -59,6 +59,8 @@ uk:
 
   pages:
     about:
-      aboutus:     "Про магазин:"
+      aboutus:     "Про магазин"
     contacts:
-      contact:     "Наші контакти:"
+      contact:     "Наші контакти"
+    news:
+      news:        "Новини"

@@ -54,6 +54,8 @@ en:
 
   pages:
     about:
-      aboutus:     "About us:"
+      aboutus:     "About us"
     contacts:
-      contact:     "Contacts:"
+      contact:     "Contacts"
+    news:
+      news:        "News"

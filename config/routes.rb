@@ -9,7 +9,7 @@
 Rails.application.routes.draw do
 
   get 'about' => 'pages#about'
-
+  get 'news' => 'pages#news'
   get 'contacts' => 'pages#contacts'
 
   get 'admin' => 'admin#index'
@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :line_items
     resources :carts
-      root 'store#index', as: 'store_index', via: :all
+    root 'store#index', as: 'store_index', via: :all
+
 
   end
 
