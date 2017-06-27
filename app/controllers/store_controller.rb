@@ -8,6 +8,7 @@
 #---
 class StoreController < ApplicationController
   skip_before_action :authorize
+  before_action :set_prod, only: [:show]
   include CurrentCart
   before_action :set_cart
   def index
@@ -17,4 +18,17 @@ class StoreController < ApplicationController
       @products = Product.order(:title)
     end
   end
+
+
+  # GET /products/1
+  # GET /products/1.json
+  def show
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_prod
+      @product = Product.find(params[:id])
+    end
+
 end

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
 
+  get 'param[:id]' => 'store#param[:id]'
 
   scope '(:locale)' do
     resources :users
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
     resources :line_items
     resources :carts
     root 'store#index', as: 'store_index', via: :all
-
+    get '/catalog/:id', to: 'store#show', as: 'store'
 
   end
 
