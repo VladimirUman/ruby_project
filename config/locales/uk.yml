@@ -43,6 +43,8 @@ uk:
     index:
       title_html:  "Твій прагматичний каталог"
       add_html:    "Додати до кошика"
+    show:
+      add_html:    "Додати до кошика"
 
   orders:
     new:

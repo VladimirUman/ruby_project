@@ -7,7 +7,6 @@
     <% cache product do %>
       <div class="entry">
         <%= link_to(image_tag(product.image_url), store_path(product)) %>
-        <h3><%= product.title %></h3>
         <h3><%= link_to product.title, store_path(product) %></h3>
         <%= sanitize(product.description) %>
         <div class="price_line">
