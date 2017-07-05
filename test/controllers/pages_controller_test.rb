@@ -10,10 +10,5 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get contacts_url
     assert_response :success
   end
-
-  test "should get news" do
-    get news_url
-    assert_response :success
-  end
-
+  
 end

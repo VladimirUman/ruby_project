@@ -1,2 +1,14 @@
 <h1><%= t('.news') %></h1>
-<p><%= t('.news') %></p>
+
+<% cache @news_actions do %>
+  <% @news_actions.each do |news_action| %>
+    <% cache news_action do %>
+      <div class="entry">
+        <%= image_tag(news_action.image_url) %>
+        <h3><%= news_action.title %></h3>
+        <p><%= sanitize(news_action.description) %></p>
+        <p><%= news_action.date %></p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

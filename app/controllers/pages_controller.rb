@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authorize
-  
+
   def about
   end
 
@@ -8,5 +8,6 @@ class PagesController < ApplicationController
   end
 
   def news
+    @news_actions = NewsAction.order(:title)
   end
 end

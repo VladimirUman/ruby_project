@@ -8,10 +8,7 @@
 #---
 Rails.application.routes.draw do
 
-  get 'about' => 'pages#about'
-  get 'news' => 'pages#news'
-  get 'contacts' => 'pages#contacts'
-
+  resources :news_actions
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -24,7 +21,10 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
 
-  get 'param[:id]' => 'store#param[:id]'
+  get 'about' => 'pages#about'
+  get 'contacts' => 'pages#contacts'
+  get 'news' => 'pages#news'
+  get 'add_news' => 'news_actions#index'
 
   scope '(:locale)' do
     resources :users
