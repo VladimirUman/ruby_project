@@ -1,6 +1,6 @@
 class NewsActionsController < ApplicationController
   before_action :set_news_action, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /news_actions
   # GET /news_actions.json
   def index

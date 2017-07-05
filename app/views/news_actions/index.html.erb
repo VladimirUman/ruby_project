@@ -14,6 +14,7 @@
       <dl>
         <dt><%= news_action.title %></dt>
         <dd><%= truncate(strip_tags(news_action.description), length: 80) %></dd>
+        <dd><%= news_action.date %></dd>
       </dl>
     </td>
 

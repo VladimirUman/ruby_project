@@ -28,10 +28,10 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_field :date, id: :news_action_date %>
+    <%= form.text_field :date, id: :news_action_date, value: Date.today %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Add/Edit News' %>
   </div>
 <% end %>
