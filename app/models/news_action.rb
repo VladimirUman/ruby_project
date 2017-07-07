@@ -6,5 +6,6 @@ class NewsAction < ApplicationRecord
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
   validates :title, :description, length: {minimum: 10}
+  validates :title, uniqueness: true
 
 end
