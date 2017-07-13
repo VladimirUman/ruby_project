@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyText
-  image_url: dcbang.jpg
+  image_uid: dcbang.jpg
   date: mydate
 
 two:
   title: MyString
   description: MyText
-  image_url: dcbang.jpg
+  image_uid: dcbang.jpg
   date: mydate
 
 ruby:
@@ -19,4 +19,4 @@ ruby:
     language out there.  If you need to get working programs
     delivered fast, you should add Ruby to your toolbox.
   date:       mydate
-  image_url:   lorem.jpg
+  image_uid:   lorem.jpg

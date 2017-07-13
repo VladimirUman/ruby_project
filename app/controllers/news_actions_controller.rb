@@ -1,6 +1,6 @@
 class NewsActionsController < ApplicationController
   before_action :set_news_action, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /news_actions
   # GET /news_actions.json
   def index
@@ -69,6 +69,6 @@ class NewsActionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_action_params
-      params.require(:news_action).permit(:title, :description, :image_url, :date)
+      params.require(:news_action).permit(:title, :description, :image, :date)
     end
 end

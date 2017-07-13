@@ -8,27 +8,28 @@ class NewsActionTest < ActiveSupport::TestCase
     assert news.errors[:title].any?
     assert news.errors[:description].any?
     assert news.errors[:date].any?
-    assert news.errors[:image_url].any?
+    assert news.errors[:image].any?
   end
 
-  def add_news(image_url)
-    NewsAction.new(title:       "My Book Title",
-                description: "yyyyyyyyyyyy",
-                date:       "xxx",
-                image_url:   image_url)
+  def add_news(image_file)
+    NewsAction.new(title:       "My News Title",
+                description: "My News Description",
+                date:       "My date",
+                image:   image_file)
   end
 
-  test "image url" do
-    ok = %w{ petya.gif fred.jpg fred.png FRED.JPG FRED.Jpg
-             http://a.b.c/x/y/z/fred.gif }
-    bad = %w{ fred.doc fred.gif/more fred.gif.more }
+  test "image file" do
+    ok = %w{ lorem.gif lorem.jpg lorem.png }
+    bad = %w{ lorem.doc lorem.txt lorem.avi }
 
     ok.each do |name|
-      assert add_news(name).valid?, "#{name} shouldn't be invalid"
+      file = Rails.root + "/images/#{name}"
+      assert add_news(file).valid?, "#{name} shouldn't be invalid"
     end
 
     bad.each do |name|
-      assert add_news(name).invalid?, "#{name} shouldn't be valid"
+      file = Rails.root + "/images/#{name}"
+      assert add_news(file).invalid?, "#{name} shouldn't be valid"
     end
   end
 
@@ -36,7 +37,7 @@ class NewsActionTest < ActiveSupport::TestCase
     news = NewsAction.new(title:       "Too short",
                           description: "yyy",
                           date:       "xxx",
-                          image_url:   "fred.gif")
+                          image:   "fred.gif")
 
     assert news.invalid?
   end
@@ -45,7 +46,7 @@ class NewsActionTest < ActiveSupport::TestCase
     news = NewsAction.new(title:       news_actions(:ruby).title,
                           description: "yyy",
                           date:       "xxx",
-                          image_url:   "fred.gif")
+                          image:   "fred.gif")
 
     assert news.invalid?
     assert_equal [I18n.translate('errors.messages.taken')],

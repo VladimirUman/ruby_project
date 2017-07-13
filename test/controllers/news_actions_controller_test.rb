@@ -6,7 +6,7 @@ class NewsActionsControllerTest < ActionDispatch::IntegrationTest
     @update = {
       title:       'Lorem Ipsum',
       description: 'Wibbles are fun!',
-      image_url:   'lorem.jpg',
+      image:        fixture_file_upload('/images/lorem.jpg'),
       date:        '07.07.2017'
     }
   end

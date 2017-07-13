@@ -7,7 +7,7 @@
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 
     <td>
-      <%= image_tag(news_action.image_url, class: 'list_image') %>
+      <%= image_tag(news_action.image.url, class: 'list_image') if news_action.image_stored?  %>
     </td>
 
     <td class="list_description">

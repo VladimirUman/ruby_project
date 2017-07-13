@@ -4,7 +4,7 @@
   <% @news_actions.each do |news_action| %>
     <% cache news_action do %>
       <div class="entry">
-        <%= image_tag(news_action.image_url) %>
+        <%= image_tag(news_action.image.url) %>
         <h3><%= news_action.title %></h3>
         <p><%= sanitize(news_action.description) %></p>
         <p><%= news_action.date %></p>
