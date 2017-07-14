@@ -1,4 +1,4 @@
 ---
 name: 7apps.jpg
-model_class: NewsAction
+model_class: Product
 model_attachment: image

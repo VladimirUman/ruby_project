@@ -16,13 +16,13 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:title].any?
     assert product.errors[:description].any?
     assert product.errors[:price].any?
-    assert product.errors[:image_url].any?
+    assert product.errors[:image].any?
   end
 
   test "product price must be positive" do
     product = Product.new(title:       "My Book Title",
-                          description: "yyy",
-                          image_url:   "zzz.jpg")
+                          description: "My Description",
+                          image:   Rails.root + "/images/lorem.jpg")
     product.price = -1
     assert product.invalid?
     assert_equal ["must be greater than or equal to 0.01"],
@@ -37,32 +37,33 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
 
-  def new_product(image_url)
+  def new_product(image_file)
     Product.new(title:       "My Book Title",
-                description: "yyy",
+                description: "My Description",
                 price:       1,
-                image_url:   image_url)
+                image:   image_file)
   end
 
   test "image url" do
-    ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
-             http://a.b.c/x/y/z/fred.gif }
-    bad = %w{ fred.doc fred.gif/more fred.gif.more }
+    ok = %w{ lorem.gif lorem.jpg lorem.png }
+    bad = %w{ lorem.doc lorem.txt lorem.avi }
 
     ok.each do |name|
-      assert new_product(name).valid?, "#{name} shouldn't be invalid"
+      file = Rails.root + "/images/#{name}"
+      assert new_product(file).valid?, "#{name} shouldn't be invalid"
     end
 
     bad.each do |name|
-      assert new_product(name).invalid?, "#{name} shouldn't be valid"
+      file = Rails.root + "/images/#{name}"
+      assert new_product(file).invalid?, "#{name} shouldn't be valid"
     end
   end
 
   test "product title must be at least 10 characters long" do
     product = Product.new(title:       "Too short",
-                          description: "yyy",
+                          description: "My Description",
                           price:       1,
-                          image_url:   "fred.gif")
+                          image:   "fred.gif")
 
     assert product.invalid?
   end
@@ -71,7 +72,7 @@ class ProductTest < ActiveSupport::TestCase
     product = Product.new(title:       products(:ruby).title,
                           description: "yyy",
                           price:       1,
-                          image_url:   "fred.gif")
+                          image:   "fred.gif")
 
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')],

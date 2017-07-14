@@ -14,7 +14,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     @update = {
       title:       'Lorem Ipsum',
       description: 'Wibbles are fun!',
-      image_url:   'lorem.jpg',
+      image:   fixture_file_upload('/images/lorem.jpg'),
       price:       19.95
     }
   end

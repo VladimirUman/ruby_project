@@ -10,6 +10,7 @@ group :production do
 end
 
 gem 'dragonfly', '~> 1.1.3'
+gem 'rack-cache', require: 'rack/cache', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
