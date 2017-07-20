@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>News</h1>
+
+<table>
+<% @news_items.each do |news_item| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+
+    <td>
+      <%= image_tag(news_item.image.url, class: 'list_image') if news_item.image_stored?  %>
+    </td>
+
+    <td class="list_description">
+      <dl>
+        <dt><%= news_item.title %></dt>
+        <dd><%= truncate(strip_tags(news_item.description), length: 80) %></dd>
+        <dd><%= news_item.date %></dd>
+      </dl>
+    </td>
+
+    <td class="list_actions">
+      <%= link_to 'Show', news_item %><br/>
+      <%= link_to 'Edit', edit_news_item_path(news_item) %><br/>
+      <%= link_to 'Destroy', news_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<%= button_to 'Add News', new_news_item_path, method: :get %>
+
+<p><%= paginate @news_items %></p>

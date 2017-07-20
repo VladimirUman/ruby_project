@@ -1,0 +1,37 @@
+<%= form_with(model: news_item, local: true) do |form| %>
+  <% if news_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(news_item.errors.count, "error") %> prohibited this news_item from being saved:</h2>
+
+      <ul>
+      <% news_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :news_item_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :news_item_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :news_item_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date, id: :news_item_date, value: Date.today %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add/Edit News' %>
+  </div>
+<% end %>

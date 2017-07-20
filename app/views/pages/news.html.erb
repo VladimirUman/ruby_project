@@ -1,15 +1,15 @@
 <h1><%= t('.news') %></h1>
 
-<% cache @news_actions do %>
-  <% @news_actions.each do |news_action| %>
-    <% cache news_action do %>
+<% cache @news_items do %>
+  <% @news_items.each do |news_item| %>
+    <% cache news_item do %>
       <div class="entry">
-        <%= image_tag(news_action.image.url) if news_action.image_stored? %>
-        <h3><%= news_action.title %></h3>
-        <p><%= sanitize(news_action.description) %></p>
-        <p><%= news_action.date %></p>
+        <%= image_tag(news_item.image.url) if news_item.image_stored? %>
+        <h3><%= news_item.title %></h3>
+        <p><%= sanitize(news_item.description) %></p>
+        <p><%= news_item.date %></p>
       </div>
     <% end %>
   <% end %>
 <% end %>
-<p><%= paginate @news_actions %></p>
+<p><%= paginate @news_items %></p>

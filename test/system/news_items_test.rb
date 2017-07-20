@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class NewsActionsTest < ApplicationSystemTestCase
+class NewsItemsTest < ApplicationSystemTestCase
   # test "visiting the index" do
   #   visit news_actions_url
   #
