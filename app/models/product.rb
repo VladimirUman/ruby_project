@@ -7,6 +7,7 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
 class Product < ApplicationRecord
+
   has_many :line_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
@@ -16,7 +17,7 @@ class Product < ApplicationRecord
 
   validates :title, uniqueness: true
   validates_property :mime_type, of: :image, in: %w(image/jpeg image/png image/gif)
-  
+
   validates :title, :description, length: {minimum: 10}
 
   dragonfly_accessor :image

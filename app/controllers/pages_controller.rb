@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   end
 
   def news
-    @news_actions = NewsAction.order(:title)
+    @news_actions = NewsAction.order(:date).page(params[:page]).per(15)
   end
 end

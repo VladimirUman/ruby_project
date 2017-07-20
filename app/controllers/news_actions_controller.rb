@@ -4,7 +4,7 @@ class NewsActionsController < ApplicationController
   # GET /news_actions
   # GET /news_actions.json
   def index
-    @news_actions = NewsAction.all
+    @news_actions = NewsAction.order(:date).page(params[:page]).per(15)
   end
 
   # GET /news_actions/1

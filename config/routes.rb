@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'contacts' => 'pages#contacts'
   get 'news' => 'pages#news'
   get 'add_news' => 'news_actions#index'
-
+  
   scope '(:locale)' do
     resources :users
     resources :orders
