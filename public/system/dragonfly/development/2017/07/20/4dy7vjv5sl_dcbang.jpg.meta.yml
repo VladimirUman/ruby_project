@@ -1,4 +1,4 @@
 ---
 name: dcbang.jpg
-model_class: NewsAction
+model_class: NewsItem
 model_attachment: image

@@ -1,9 +1,9 @@
-class CreateNewsActions < ActiveRecord::Migration[5.1]
+class CreateNewsItems < ActiveRecord::Migration[5.1]
   def change
-    create_table :news_actions do |t|
+    create_table :news_items do |t|
       t.string :title
       t.text :description
-      t.string :image_url
+      t.string :image_uid
       t.string :date
 
       t.timestamps

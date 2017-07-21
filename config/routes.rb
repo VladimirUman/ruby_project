@@ -8,6 +8,7 @@
 #---
 Rails.application.routes.draw do
 
+  resources :categories
   resources :news_items
   get 'admin' => 'admin#index'
   controller :sessions do
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'contacts' => 'pages#contacts'
   get 'news' => 'pages#news'
-  get 'add_news' => 'news_items#index'
+  
 
   scope '(:locale)' do
     resources :users
