@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    @category.parent = Category.find(params[:id]) unless params[:id].nil?
+    @category.parent_id = Category.find(params[:id]) unless params[:id].nil?
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 

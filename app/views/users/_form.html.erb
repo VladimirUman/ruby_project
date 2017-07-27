@@ -1,6 +1,4 @@
-<div class="depot_form">
-
-<%= form_for(user) do |f| %>
+<%= form_for(user, :html => { class: "form-horizontal center" }) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %>
@@ -17,26 +15,32 @@
   <fieldset>
   <legend>Enter User Details</legend>
 
-  <div class="field">
-    <%= f.label :name, 'Name:' %>
-    <%= f.text_field :name, size: 40 %>
+  <div class="form-group">
+    <%= f.label :name, 'Name:', class: "col-sm-1 control-label" %>
+    <div class="col-sm-2">
+    <%= f.text_field :name, size: 40, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password, 'Password:' %>
-    <%= f.password_field :password, size: 40 %>
+  <div class="form-group">
+    <%= f.label :password, 'Password:', class: "col-sm-1 control-label" %>
+    <div class="col-sm-2">
+    <%= f.password_field :password, size: 40, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirm:' %>
-    <%= f.password_field :password_confirmation, size: 40 %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'Confirm:', class: "col-sm-1 control-label" %>
+    <div class="col-sm-2">
+    <%= f.password_field :password_confirmation, size: 40, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+    <%= f.submit class: "btn btn-info" %>
+    </div>
   </div>
 
   </fieldset>
 <% end %>
-
-</div>

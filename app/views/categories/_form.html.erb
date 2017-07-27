@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :parent %>
-    <%= select_tag(:parent_id, options_for_select(@categories, nil), prompt: "Select one!") %>
+    <%= select_tag(:parent_id, options_for_select(@categories), prompt: "Select") %>
   </div>
 
   <div class="actions">

@@ -1,25 +1,29 @@
-<div class="depot_form">
   <% if flash[:alert] %>
     <p id="notice"><%= flash[:alert] %></p>
   <% end %>
 
-  <%= form_tag do %>
+  <%= form_tag login_url, class: "form-horizontal" do %>
     <fieldset>
       <legend>Please Log In</legend>
 
-      <div>
-        <%= label_tag :name, 'Name:' %>
-        <%= text_field_tag :name, params[:name] %>
+      <div class="form-group">
+        <%= label_tag :name, 'Name:', class: "col-sm-1 control-label" %>
+        <div class="col-sm-2">
+        <%= text_field_tag :name, params[:name], class: "form-control" %>
+        </div>
       </div>
 
-      <div>
-        <%= label_tag :password, 'Password:' %>
-        <%= password_field_tag :password, params[:password] %>
+      <div class="form-group">
+        <%= label_tag :password, 'Password:', class: "col-sm-1 control-label" %>
+        <div class="col-sm-2">
+        <%= password_field_tag :password, params[:password], class: "form-control" %>
+        </div>
       </div>
-  
-      <div>
-        <%= submit_tag "Login" %>
+
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+        <%= submit_tag "Login", class: "btn btn-info" %>
+        </div>
       </div>
     </fieldset>
   <% end %>
-</div>
