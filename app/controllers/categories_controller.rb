@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @category = nil
-    @categories = Category.where(parent_id: nil)
+    @categories = Category.parent_categories
   end
 
   # GET /categories/1
@@ -22,20 +22,18 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    @category.parent_id = Category.find(params[:id]) unless params[:id].nil?
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @parent = params[:id]
   end
 
   # GET /categories/1/edit
   def edit
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @parent = Category.find(params[:id]).parent_id
   end
 
   # POST /categories
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-    @category.parent_id = params[:parent_id]
 
     respond_to do |format|
       if @category.save
@@ -51,7 +49,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
-    @category.parent_id = params[:parent_id]
+
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -81,6 +79,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.fetch(:category).permit(:name, :image, :parent_id)
+      params.fetch(:category, {}).permit(:name, :image, :parent_id)
     end
 end

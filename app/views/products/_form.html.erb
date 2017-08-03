@@ -1,4 +1,4 @@
-<%= form_with(model: product, local: true) do |form| %>
+<%= form_for(product, :html => {class: "form-horizontal center" }) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -11,32 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :product_title %>
+  <div class="form-group">
+    <%= form.label :title, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+    <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description, rows: 10, cols: 60 %>
+  <div class="form-group">
+    <%= form.label :description, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+    <%= form.text_area :description, class: "form-control", rows: 10, cols: 60 %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.file_field :image, id: :product_image %>
+  <div class="form-group">
+    <%= form.label :image_url, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+    <%= form.file_field :image %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
+  <div class="form-group">
+    <%= form.label :price, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+    <%= form.text_field :price, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= select_tag(:category_id, options_for_select(@categories), prompt: "Select one!") %>
+  <div class="form-group">
+    <%= form.label :category, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+    <%= select_tag(:category_id, options_for_select(@categories), class: "form-control", prompt: "Select") %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+    <%= form.submit class: "btn btn-info" %>
+    </div>
   </div>
 <% end %>

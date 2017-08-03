@@ -15,7 +15,7 @@
 <% end %>
 </table>
 <p>
-  <%= button_to 'New category', new_category_path(@category) unless @category.nil? %>
+  <%= button_to('New category', new_category_path(@category), method: :get, class: "btn btn-info") unless @category.nil? %>
   <%= link_to 'Back', @category.parent_id.nil? ? categories_path : category_path(@category.parent_id) unless @category.nil? %>
 </p>
 </div>

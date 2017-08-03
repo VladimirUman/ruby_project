@@ -13,8 +13,7 @@
     <td class="list_description">
       <dl>
         <dt><%= product.title %></dt>
-        <dd><%= truncate(strip_tags(product.description),
-               length: 80) %></dd>
+        <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
       </dl>
     </td>
 
@@ -35,6 +34,6 @@
 
 <br />
 
-<%= button_to 'New product', new_product_path, method: :get %>
+<%= button_to 'New product', new_product_path, method: :get, class: "btn btn-info" %>
 
 <p><%= paginate @products %></p>

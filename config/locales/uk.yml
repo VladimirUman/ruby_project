@@ -23,12 +23,12 @@ uk:
 
   layouts:
     application:
-      title:       "Прагматична книжкова полиця"
+      title:       "Книжкова полиця"
       home:        "Домашня сторінка"
       questions:   "Запитання"
       news:        "Новини"
       contact:     "Контакти"
-      aboutus:     "Про нас"
+      about:       "Про нас"
       catalog:     "Каталог товарів"
 
   carts:
@@ -41,7 +41,7 @@ uk:
 
   store:
     index:
-      title_html:  "Твій прагматичний каталог"
+      title_html:  "Твій каталог"
       add_html:    "Додати до кошика"
     show:
       add_html:    "Додати до кошика"
@@ -66,3 +66,11 @@ uk:
       contact:     "Наші контакти"
     news:
       news:        "Новини"
+
+  views:
+    pagination:
+      first: "&laquo; Перша"
+      last: "Остання &raquo;"
+      previous: "&lsaquo; Попередня"
+      next: "Наступна &rsaquo;"
+      truncate: "&hellip;"

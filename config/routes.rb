@@ -8,6 +8,7 @@
 #---
 Rails.application.routes.draw do
 
+  get '/categories/new/:id', to: 'categories#new', as: 'new_category'
   resources :categories
   resources :news_items
   get 'admin' => 'admin#index'
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'contacts' => 'pages#contacts'
   get 'news' => 'pages#news'
-  
 
   scope '(:locale)' do
     resources :users
@@ -34,7 +34,6 @@ Rails.application.routes.draw do
     resources :carts
     root 'store#index', as: 'store_index', via: :all
     get '/catalog/:id', to: 'store#show', as: 'store'
-
   end
 
   # For details on the DSL available within this file, see
