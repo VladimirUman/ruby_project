@@ -45,6 +45,8 @@ uk:
       add_html:    "До кошика"
     show:
       add_html:    " До кошика "
+    show_cat:
+      add_html:    " До кошика "
 
   orders:
     new:

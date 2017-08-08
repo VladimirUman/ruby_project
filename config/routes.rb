@@ -33,7 +33,8 @@ Rails.application.routes.draw do
     resources :line_items
     resources :carts
     root 'store#index', as: 'store_index', via: :all
-    get '/catalog/:id', to: 'store#show', as: 'store'
+    get '/product/:id', to: 'store#show', as: 'store'
+    get '/category/:id', to: 'store#show_cat', as: 'store_cat'
   end
 
   # For details on the DSL available within this file, see

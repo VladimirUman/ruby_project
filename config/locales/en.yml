@@ -40,6 +40,8 @@ en:
       add_html:    "Add to Cart"
     show:
       add_html:    "Add to Cart"
+    show_cat:
+      add_html:    "Add to Cart"
 
   orders:
     new:
