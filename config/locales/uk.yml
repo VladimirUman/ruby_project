@@ -42,9 +42,9 @@ uk:
   store:
     index:
       title_html:  "Твій каталог"
-      add_html:    "Додати до кошика"
+      add_html:    "До кошика"
     show:
-      add_html:    "Додати до кошика"
+      add_html:    " До кошика "
 
   orders:
     new:

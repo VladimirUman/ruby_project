@@ -1,32 +1,45 @@
+#columns {
+  display: flex;
+
+  #side {
+    float: left;
+    padding: 1em 2em;
+    background: #F8F8F8;
+    width: 25%;
+    padding-bottom: 1000px;
+    border: 1px solid #f1f1f1;
+  	border-radius: 3px;
+  }
+
+  #products {
+    background: white;
+    flex: 1;
+    list-style: none;
+    margin: 0 -10px 0 15px;
+    padding: 0;
+  }
+}
+
+#cart {
+      font-size: smaller;
+      color:     black;
+
+      table {
+        border-top:    1px dotted #595;
+        border-bottom: 1px dotted #595;
+        margin-bottom: 10px;
+      }
+    }
+
+  .wrapper {
+    padding: 0;
+  }
+
   .product-wrapper {
   	display: block;
   	width: 100%;
   	float: left;
   	transition: width .2s;
-  }
-
-  @media only screen and (min-width: 450px) {
-  	.product-wrapper {
-  		width: 50%;
-  	}
-  }
-
-  @media only screen and (min-width: 768px) {
-  	.product-wrapper {
-  		width: 33.333%;
-  	}
-  }
-
-  @media only screen and (min-width: 1000px) {
-  	.product-wrapper {
-  		width: 25%;
-  	}
-  }
-
-  .products {
-    list-style: none;
-    margin: 0 -20px 0 0;
-    padding: 0;
   }
 
   .product {
@@ -36,10 +49,14 @@
   	position: relative;
   	background: #fff;
   	margin: 0 20px 20px 0;
-  	text-decoration: none;
-  	color: #474747;
+    text-decoration: none;
+    color: #474747;
   	z-index: 0;
-  	height: 500px;
+    flex-basis:auto;
+  }
+
+  .product a:hover {
+    text-decoration: none;
   }
 
   .product-photo {
@@ -64,6 +81,10 @@
   	transform: scale(1.3);
   }
 
+  .product-text {
+    margin: 0 15px;
+  }
+
   .description {
   	position: relative;
   	margin: 0;
@@ -71,6 +92,7 @@
   	line-height: 1.4em;
   	height: 5.6em;
   	overflow: hidden;
+    color: black;
   }
 
   .description:after {
@@ -84,8 +106,48 @@
   	background: linear-gradient(to left top, #fff, rgba(255, 255, 255, 0));
   }
 
-  .product h3 {
+  .product h2 {
     font-size: 1.4em;
-    color: #277e16;
+    color: black;
     margin: 0 0 .7em;
   }
+
+  .product-details {
+    margin: 20px 0 15px 0;
+  }
+
+  .product-details div {
+    font-size: 1.3em;
+    text-align: center;
+    display: inline-block;
+    width: 49%;
+  }
+
+  .pages {
+    text-align: center;
+  }
+
+
+@media all and (max-width: 800px) {
+  #columns {
+    flex-direction: column-reverse;
+  }
+}
+
+@media only screen and (min-width: 450px) {
+  .product-wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .product-wrapper {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .product-wrapper {
+    width: 33.333%;
+  }
+}

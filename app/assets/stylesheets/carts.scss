@@ -11,4 +11,15 @@
     font-weight: bold;
     border-top: 1px solid #595;
   }
+
+  .cart-buttons {
+    float: left;
+    margin-right: 3p
+  }
+
+  .cart-buttons div {
+    text-align: center;
+    display: inline-block;
+    width: 49%;
+  }
 }

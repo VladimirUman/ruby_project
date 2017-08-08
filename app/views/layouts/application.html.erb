@@ -56,21 +56,12 @@
 </nav>
 
     <div id="banner">
-
       <span class="title"><%= @page_title %></span>
     </div>
 
-    <div id="columns">
-
-        <% if @cart %>
-          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-            <%= render @cart %>
-          <% end %>
-        <% end %>
-
-      <div id="main">
-        <%= yield %>
-      </div>
+    <div id="main">
+      <%= yield %>
     </div>
+
   </body>
 </html>
