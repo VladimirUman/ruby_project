@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <fieldset>
   <div class="form-group">
     <%= form.label :title, class: "col-sm-1 control-label" %>
     <div class="col-sm-4">
@@ -42,7 +42,7 @@
   <div class="form-group">
     <%= form.label :category, class: "col-sm-1 control-label" %>
     <div class="col-sm-4">
-    <%= select_tag(:category_id, options_for_select(@categories), class: "form-control", prompt: "Select") %>
+    <%= form.select(:category_id, options_for_select(@categories), {prompt: "Select"}, {class: "form-control"}) %>
     </div>
   </div>
 
@@ -51,4 +51,6 @@
     <%= form.submit class: "btn btn-info" %>
     </div>
   </div>
+
+</fieldset>
 <% end %>

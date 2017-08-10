@@ -2,16 +2,16 @@
 
 <div id="columns">
 	<div id="side">
-		<div class="widget">
 			<h3>Categories:</h3>
-			<fieldset>
-				<ul>
+				<ul class="nav nav-tabs nav-stacked">
 					<% @categories.each do |category| %>
-					<li><%= link_to category.name, store_cat_path(category) %></li>
+						<li class="nav-header"><%= category.name %></li>
+						<% category.subcategories.each do |subcategory| %>
+						<li><%= link_to subcategory.name, store_cat_path(subcategory) %></li>
+						<% end %>
 					<% end %>
 				</ul>
-			</fieldset>
-		</div>
+				<p></p>
 				<% if @cart %>
           <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
             <%= render @cart %>
@@ -57,6 +57,6 @@
 	</div>
 </div>
 
-<div class="pages">
+<div class="pg">
 	<%= paginate @products %>
 </div>

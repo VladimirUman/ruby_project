@@ -2,38 +2,22 @@
 
 <h1>Products</h1>
 
-<table>
+<div class="col-md-10">
+<table class="table">
 <% @products.each do |product| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-
-    <td>
-      <%= image_tag(product.image.url, class: 'list_image') if product.image_stored? %>
-    </td>
-
-    <td class="list_description">
-      <dl>
-        <dt><%= product.title %></dt>
-        <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
-      </dl>
-    </td>
-
-    <td class="list_actions">
-      <%= link_to 'Show', product %><br/>
-      <%= link_to 'Edit', edit_product_path(product) %><br/>
-      <%= link_to 'Destroy', product, method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    </td>
-
-    <td>
-      <%= link_to Category.find(product.category_id).name, category_path(product.category_id) %>
-    </td>
-
-  </tr>
+<tr>
+  <td width="5%"><%= image_tag(product.image.url, class: 'image') if product.image_stored? %></td>
+  <td><strong><%= product.title %></strong></td>
+  <td width="15%"><%= Category.find(product.category_id).name %></td>
+  <td width="5%"><%= link_to 'Show', product %></td>
+  <td width="5%"><%= link_to 'Edit', edit_product_path(product) %><br/></td>
+  <td width="5%"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
 <% end %>
 </table>
 
-<br />
-
 <%= button_to 'New product', new_product_path, method: :get, class: "btn btn-info" %>
+
+</div>
 
 <p><%= paginate @products %></p>

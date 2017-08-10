@@ -5,8 +5,13 @@
 </p>
 
 <p>
-  <strong>title:</strong>
+  <strong>Title:</strong>
   <%= @product.title %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= Category.find(@product.category_id).name %>
 </p>
 
 <p>

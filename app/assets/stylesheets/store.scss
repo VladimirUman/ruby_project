@@ -4,11 +4,15 @@
   #side {
     float: left;
     padding: 1em 2em;
-    background: #F8F8F8;
+    background: white;
     width: 25%;
     padding-bottom: 1000px;
     border: 1px solid #f1f1f1;
   	border-radius: 3px;
+
+    .nav-tabs {
+      border-bottom: 0;
+    }
   }
 
   #products {
@@ -123,7 +127,7 @@
     width: 49%;
   }
 
-  .pages {
+  .pg {
     text-align: center;
   }
 

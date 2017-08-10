@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
         format.json { render :show, status: :ok, location: @product }
 
         @products = Product.order(:title).page(params[:page]).per(15)
-        ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
+        ActionCable.server.broadcast 'products', html: render_to_string('products/index', layout: false)
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }

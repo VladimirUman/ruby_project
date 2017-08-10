@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @category = nil
-    @categories = Category.parent_categories
+    @categories = Category.first.subcategories
   end
 
   # GET /categories/1
