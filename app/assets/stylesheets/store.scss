@@ -19,7 +19,7 @@
     background: white;
     flex: 1;
     list-style: none;
-    margin: 0 -10px 0 15px;
+    margin: 0 -20px 0 15px;
     padding: 0;
   }
 }
@@ -35,8 +35,42 @@
       }
     }
 
+  .product-head {
+    background: white;
+    border: 1px solid #f1f1f1;
+  	border-radius: 3px;
+    height: 45px;
+    margin: 0 20px 20px 0;
+    line-height: 45px;
+  }
+
+  .product-head form {
+    margin-left: 10px;
+    display: inline-block;
+    width: 49%;
+  }
+
+  .layout-buttons {
+    display: inline-block;
+    width: 48%;
+    text-align: right;
+    font-size: 23px;
+  }
+
+  .layout-buttons span {
+    cursor: auto;
+  }
+
+  .layout-buttons .disable {
+    color: gray;
+    cursor: pointer;
+  }
+
   .wrapper {
     padding: 0;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .product-wrapper {
@@ -44,7 +78,7 @@
   	width: 100%;
   	float: left;
   	transition: width .2s;
-  }
+
 
   .product {
   	display: block;
@@ -110,8 +144,8 @@
   	background: linear-gradient(to left top, #fff, rgba(255, 255, 255, 0));
   }
 
-  .product h2 {
-    font-size: 1.4em;
+  .product h3 {
+    font-size: 1.3em;
     color: black;
     margin: 0 0 .7em;
   }
@@ -126,11 +160,60 @@
     display: inline-block;
     width: 49%;
   }
-
+}
   .pg {
     text-align: center;
+    margin-top: 10px;
   }
 
+  .table {
+    padding: 0;
+    display: block;
+
+  .product-wrapper {
+  	width: 100%;
+    height: 230px;
+  }
+
+  .product {
+    margin: 0 20px 20px 0;
+    position: relative;
+  }
+
+  .product-main {
+  	width: 100%;
+  }
+
+  .product-photo {
+  	display: inline-block;
+    width: 210px;
+    height: 210px;
+    padding-bottom: 210px;
+  }
+
+  .product-text {
+    display: inline-block;
+    width: 70%;
+    height: 180px;
+    margin: 15px 0 20px 10px;
+    vertical-align: top;
+  }
+
+  .product-details {
+    width: 50%;
+    height: 50px;
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+    margin: 0;
+  }
+
+  .product-details div {
+    font-size: 1.3em;
+    text-align: center;
+    display: inline-block;
+  }
+}
 
 @media all and (max-width: 800px) {
   #columns {

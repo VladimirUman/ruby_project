@@ -2,7 +2,6 @@
 
 <div id="columns">
 	<div id="side">
-			<h3>Categories:</h3>
 				<ul class="nav nav-tabs nav-stacked">
 					<% @categories.each do |category| %>
 						<li class="nav-header"><%= category.name %></li>
@@ -20,7 +19,20 @@
 	</div>
 
 	<div id="products">
-	<h1><%= t('.title_html') %></h1>
+		<div class="product-head">
+			<%= form_tag store_index_path, class: 'sort' do %>
+				<div class="form-group">
+				<%= label :sort, t('.sort') %>
+				<%= select_tag('sort', options_for_select([[t('.title'), 'title'], [t('.price'), 'price'], [t('.date'), 'created_at']], params[:sort]), onchange: 'this.form.submit()') %>
+				</div>
+				<%= submit_tag 'submit' %>
+				<%= javascript_tag "$('.sort input').hide()" %>
+			<% end %>
+			<div class="layout-buttons">
+				<span class="glyphicon glyphicon-th"></span>
+				<span class="glyphicon glyphicon-th-list disable"></span>
+			</div>
+		</div>
 		<ul class="wrapper">
 			<% cache @products do %>
 		    <% @products.each do |product| %>
@@ -33,7 +45,7 @@
 		              	<%= image_tag(product.image.url) if product.image_stored? %>
 		              </div>
 		              <div class="product-text">
-		              	<h2><%= product.title %></h2>
+		              	<h3><%= product.title %></h3>
 		                <div class="description">
 		                <%= sanitize(product.description) %>
 		                </div>
@@ -54,9 +66,8 @@
 		    <% end %>
 		  <% end %>
 		</ul>
+		<div class="pg">
+			<%= paginate @products %>
+		</div>
 	</div>
-</div>
-
-<div class="pg">
-	<%= paginate @products %>
 </div>

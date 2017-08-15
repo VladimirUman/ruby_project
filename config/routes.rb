@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :carts
     root 'store#index', as: 'store_index', via: :all
     get '/product/:id', to: 'store#show', as: 'store'
-    get '/category/:id', to: 'store#show_cat', as: 'store_cat'
+    match '/category/:id', to: 'store#show_cat', as: 'store_cat', via: [:get, :post]
   end
 
 end

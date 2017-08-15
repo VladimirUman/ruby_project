@@ -43,10 +43,18 @@ uk:
     index:
       title_html:  "Твій каталог"
       add_html:    "До кошика"
+      sort:       "Сортувати:"
+      title:      "за назвою"
+      price:      "за ціною"
+      date:      "за новинкою"
     show:
       add_html:    " До кошика "
     show_cat:
       add_html:    " До кошика "
+      sort:       "Сортувати:"
+      title:      "за назвою"
+      price:      "за ціною"
+      date:      "за новинкою"
 
   orders:
     new:

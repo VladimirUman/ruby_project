@@ -5,12 +5,17 @@ class StoreController < ApplicationController
   include CurrentCart
   before_action :set_cart
 
+
   def index
     if params[:set_locale]
       redirect_to store_index_url(locale: params[:set_locale])
     else
-      @products = Product.order(:title).page(params[:page]).per(9)
       @categories = Category.first.subcategories
+      if params[:sort]
+        @products = Product.order(params[:sort]).page(params[:page]).per(9)
+      else
+        @products = Product.order(:title).page(params[:page]).per(9)
+      end
     end
   end
 
@@ -24,8 +29,16 @@ class StoreController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show_cat
-    @products = Product.where(category_id: @category.id).page(params[:page]).per(9)
-    @categories = Category.first.subcategories
+    if params[:set_locale]
+      redirect_to store_index_url(locale: params[:set_locale])
+    else
+      @categories = Category.first.subcategories
+      if params[:sort]
+        @products = Product.where(category_id: @category.id).order(params[:sort]).page(params[:page]).per(9)
+      else
+        @products = Product.where(category_id: @category.id).order(:title).page(params[:page]).per(9)
+      end
+    end
   end
 
   private
@@ -36,6 +49,5 @@ class StoreController < ApplicationController
     def set_cat
       @category = Category.find(params[:id])
     end
-
 
 end
