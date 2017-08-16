@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  match 'search', to:'store#search', as: 'search', via: [:get, :post]
+
   get '/categories/new/:id', to: 'categories#new', as: 'new_category'
   resources :categories
   resources :news_items
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     root 'store#index', as: 'store_index', via: :all
     get '/product/:id', to: 'store#show', as: 'store'
     match '/category/:id', to: 'store#show_cat', as: 'store_cat', via: [:get, :post]
+    
   end
 
 end

@@ -50,6 +50,12 @@ en:
       title:      "by title"
       price:      "by price"
       date:      "by date"
+    search:
+      add_html:    "Add to Cart"
+      sort:       "Sort"
+      title:      "by title"
+      price:      "by price"
+      date:      "by date"
 
   orders:
     new:

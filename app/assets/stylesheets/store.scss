@@ -42,19 +42,25 @@
     height: 45px;
     margin: 0 20px 20px 0;
     line-height: 45px;
+    position: relative;
   }
 
   .product-head form {
     margin-left: 10px;
     display: inline-block;
     width: 49%;
+    position: absolute;
+    left: 0;
   }
 
   .layout-buttons {
+    margin-right: 10px;
     display: inline-block;
     width: 48%;
     text-align: right;
     font-size: 23px;
+    position: absolute;
+    right: 0;
   }
 
   .layout-buttons span {

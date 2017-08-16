@@ -5,7 +5,6 @@ class StoreController < ApplicationController
   include CurrentCart
   before_action :set_cart
 
-
   def index
     if params[:set_locale]
       redirect_to store_index_url(locale: params[:set_locale])
@@ -37,6 +36,19 @@ class StoreController < ApplicationController
         @products = Product.where(category_id: @category.id).order(params[:sort]).page(params[:page]).per(9)
       else
         @products = Product.where(category_id: @category.id).order(:title).page(params[:page]).per(9)
+      end
+    end
+  end
+
+  def search
+    if params[:set_locale]
+      redirect_to store_index_url(locale: params[:set_locale])
+    else
+      @categories = Category.first.subcategories
+      if params[:sort]
+        @products = Product.where( 'title LIKE ?', '%'+params[:search]+'%' ).order(params[:sort]).page(params[:page]).per(9)
+      else
+        @products = Product.where( 'title LIKE ?', '%'+params[:search]+'%' ).order(:title).page(params[:page]).per(9)
       end
     end
   end

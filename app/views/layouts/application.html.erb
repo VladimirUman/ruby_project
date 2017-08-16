@@ -26,6 +26,12 @@
           <li><%= link_to t('.news'), news_path   %></li>
           <li><%= link_to t('.about'), about_path   %></li>
           <li><%= link_to t('.contact'), contacts_path   %></li>
+          <%= form_tag search_path, method: :get, class: "navbar-form navbar-left" do %>
+              <div class="form-group">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
+              <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+              </div>
+            <% end %>
         <% if session[:user_id] %>
           <li><%= link_to 'Orders',   orders_path   %></li>
           <li><%= link_to 'Products', products_path %></li>

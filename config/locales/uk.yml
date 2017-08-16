@@ -55,6 +55,12 @@ uk:
       title:      "за назвою"
       price:      "за ціною"
       date:      "за новинкою"
+    search:
+      add_html:    " До кошика "
+      sort:       "Сортувати:"
+      title:      "за назвою"
+      price:      "за ціною"
+      date:      "за новинкою"
 
   orders:
     new:
