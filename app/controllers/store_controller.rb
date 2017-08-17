@@ -45,11 +45,7 @@ class StoreController < ApplicationController
       redirect_to store_index_url(locale: params[:set_locale])
     else
       @categories = Category.first.subcategories
-      if params[:sort]
-        @products = Product.where( 'title LIKE ?', '%'+params[:search]+'%' ).order(params[:sort]).page(params[:page]).per(9)
-      else
-        @products = Product.where( 'title LIKE ?', '%'+params[:search]+'%' ).order(:title).page(params[:page]).per(9)
-      end
+      @products = Product.search(params[:search]).page(params[:page]).per(9)
     end
   end
 

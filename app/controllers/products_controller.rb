@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.category_id = params[:category_id]
     @categories = Category.all.map{|c| [ c.name, c.id ] }
 
     respond_to do |format|
