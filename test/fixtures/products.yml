@@ -2,16 +2,18 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: Ruby Performance Optimization
+  description: Ruby Performance Optimization
   image_uid: dcbang.jpg
   price: 9.99
+  category_id: 3
 
 two:
   title: MyString
   description: MyText
   image_uid: dcbang.jpg
   price: 9.99
+  category_id: 3
 
 ruby:
   title:       Programming Ruby 1.9
@@ -21,3 +23,4 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price:       49.50
   image_uid:   ruby.png
+  category_id: 3

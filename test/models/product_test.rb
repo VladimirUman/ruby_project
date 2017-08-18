@@ -22,6 +22,7 @@ class ProductTest < ActiveSupport::TestCase
   test "product price must be positive" do
     product = Product.new(title:       "My Book Title",
                           description: "My Description",
+                          category_id: 2,
                           image:   Rails.root + "/images/lorem.jpg")
     product.price = -1
     assert product.invalid?
@@ -41,6 +42,7 @@ class ProductTest < ActiveSupport::TestCase
     Product.new(title:       "My Book Title",
                 description: "My Description",
                 price:       1,
+                category_id: 2,
                 image:   image_file)
   end
 

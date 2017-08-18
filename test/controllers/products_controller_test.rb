@@ -15,7 +15,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       title:       'Lorem Ipsum',
       description: 'Wibbles are fun!',
       image:   fixture_file_upload('/images/lorem.jpg'),
-      price:       19.95
+      price:       19.95,
+      category_id: 3
     }
   end
 

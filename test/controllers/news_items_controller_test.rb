@@ -12,7 +12,7 @@ class NewsItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get add_news_url
+    get news_items_url
     assert_response :success
   end
 

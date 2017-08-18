@@ -2,7 +2,13 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @category = categories(:one)
+    @category = categories(:four)
+    @update = {
+      id:        5,
+      name:      'Test Category',
+      image:     fixture_file_upload('/images/lorem.jpg'),
+      parent_id: 2
+    }
   end
 
   test "should get index" do
@@ -11,13 +17,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_category_url
+    get new_category_url(:id => 2)
     assert_response :success
   end
 
   test "should create category" do
     assert_difference('Category.count') do
-      post categories_url, params: { category: {  } }
+      post categories_url, params: { category: @update }
     end
 
     assert_redirected_to category_url(Category.last)
@@ -34,7 +40,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update category" do
-    patch category_url(@category), params: { category: {  } }
+    patch category_url(@category), params: { category: @update }
     assert_redirected_to category_url(@category)
   end
 
