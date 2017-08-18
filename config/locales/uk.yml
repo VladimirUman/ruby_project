@@ -29,7 +29,8 @@ uk:
       news:        "Новини"
       contact:     "Контакти"
       about:       "Про нас"
-      catalog:     "Каталог товарів"
+      catalog:     "Каталог"
+      search:      "Пошук"
 
   carts:
     cart:
