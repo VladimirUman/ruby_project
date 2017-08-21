@@ -7,14 +7,12 @@ class NewsItemTest < ActiveSupport::TestCase
     assert news.invalid?
     assert news.errors[:title].any?
     assert news.errors[:description].any?
-    assert news.errors[:date].any?
     assert news.errors[:image].any?
   end
 
   def add_news(image_file)
     NewsItem.new(title:       "My News Title",
                 description: "My News Description",
-                date:       "My date",
                 image:   image_file)
   end
 
@@ -36,7 +34,6 @@ class NewsItemTest < ActiveSupport::TestCase
   test "news title must be at least 10 characters long" do
     news = NewsItem.new(title:       "Too short",
                           description: "yyy",
-                          date:       "xxx",
                           image:   "fred.gif")
 
     assert news.invalid?
@@ -45,7 +42,6 @@ class NewsItemTest < ActiveSupport::TestCase
   test "news is not valid without a unique title - i18n" do
     news = NewsItem.new(title:       news_items(:ruby).title,
                           description: "yyy",
-                          date:       "xxx",
                           image:   "fred.gif")
 
     assert news.invalid?

@@ -2,23 +2,23 @@
 
 <h1>News</h1>
 
-<table>
+<table class="table">
 <% @news_items.each do |news_item| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  <tr>
 
     <td>
-      <%= image_tag(news_item.image.url, class: 'list_image') if news_item.image_stored?  %>
+      <%= image_tag(news_item.image.url, class: 'image') if news_item.image_stored?  %>
     </td>
 
-    <td class="list_description">
+    <td class="description">
       <dl>
         <dt><%= news_item.title %></dt>
-        <dd><%= truncate(strip_tags(news_item.description), length: 80) %></dd>
-        <dd><%= news_item.date %></dd>
+        <dd><%= truncate(strip_tags(news_item.description), length: 170) %></dd>
+        <dd><%= news_item.created_at.to_s(:my_datetime) %></dd>
       </dl>
     </td>
 
-    <td class="list_actions">
+    <td class="actions">
       <%= link_to 'Show', news_item %><br/>
       <%= link_to 'Edit', edit_news_item_path(news_item) %><br/>
       <%= link_to 'Destroy', news_item, method: :delete, data: { confirm: 'Are you sure?' } %>

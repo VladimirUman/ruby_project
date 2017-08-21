@@ -4,7 +4,7 @@ class NewsItemsController < ApplicationController
   # GET /news_items
   # GET /news_items.json
   def index
-    @news_items = NewsItem.order(:date).page(params[:page]).per(15)
+    @news_items = NewsItem.order(:created_at).page(params[:page]).per(15)
   end
 
   # GET /news_items/1
@@ -69,6 +69,6 @@ class NewsItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_item_params
-      params.require(:news_item).permit(:title, :description, :image, :date)
+      params.require(:news_item).permit(:title, :description, :image)
     end
 end

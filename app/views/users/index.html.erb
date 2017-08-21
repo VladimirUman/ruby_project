@@ -2,8 +2,7 @@
 
 <h1>Users</h1>
 
-<div class="col-md-6">
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
       <th width="70%">Name</th>
@@ -22,8 +21,8 @@
   </tbody>
 </table>
 
-<br>
+
 
 <%= button_to 'New User', new_user_path, method: :get, class: "btn btn-info" %>
-</div>
+
 <p><%= paginate @users %></p>

@@ -1,6 +1,6 @@
 class NewsItem < ApplicationRecord
 
-  validates :title, :description, :image, :date, presence: true
+  validates :title, :description, :image, presence: true
 
   validates_property :mime_type, of: :image, in: %w(image/jpeg image/png image/gif)
 

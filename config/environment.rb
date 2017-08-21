@@ -16,3 +16,5 @@ Depot::Application.configure do
     enable_starttls_auto: true
   }
 end
+
+Time::DATE_FORMATS[:my_datetime] = "%d.%m.%Y %k:%M"
