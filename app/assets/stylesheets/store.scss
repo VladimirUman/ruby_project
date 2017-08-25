@@ -19,7 +19,7 @@
     background: white;
     flex: 1;
     list-style: none;
-    margin: 0 -20px 0 15px;
+    margin: 0 0 0 15px;
     padding: 0;
   }
 }
@@ -40,7 +40,7 @@
     border: 1px solid #f1f1f1;
   	border-radius: 3px;
     height: 45px;
-    margin: 0 20px 20px 0;
+    margin: 0 0 20px 0;
     line-height: 45px;
     position: relative;
   }
@@ -77,6 +77,7 @@
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .product-wrapper {
@@ -92,7 +93,7 @@
   	border-radius: 3px;
   	position: relative;
   	background: #fff;
-  	margin: 0 20px 20px 0;
+  	margin: 0 0 20px 0;
     text-decoration: none;
     color: #474747;
   	z-index: 0;
@@ -235,12 +236,12 @@
 
 @media only screen and (min-width: 768px) {
   .product-wrapper {
-    width: 50%;
+    width: 48%;
   }
 }
 
 @media only screen and (min-width: 1000px) {
   .product-wrapper {
-    width: 33.333%;
+    width: 32%;
   }
 }
