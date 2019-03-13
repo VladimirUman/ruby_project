@@ -56,6 +56,13 @@
             <% end %>
           </a>
         </li>
+        <li>
+          <% if @cart %>
+            <div id="korz">
+              <%= @cart.total_quantity %>
+            </div>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

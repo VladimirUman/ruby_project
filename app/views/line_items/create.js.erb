@@ -4,5 +4,7 @@ if ($('#cart tr').length == 1) { $('#cart').show('blind', 100); }
 
 $('#cart').html("<%=j render(@cart) %>");
 
+$('#korz').html("<%= @cart.total_quantity %>");
+
 $('#current_item').css({'background-color':'#88ff88'}).
   animate({'background-color':'#F1F1F1'}, 1000);
