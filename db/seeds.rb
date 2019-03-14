@@ -7,6 +7,21 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
 # encoding: utf-8
+
+#Category.create!(name: 'Products')
+
+#Category.create!(name: 'Books', category_id: 1)
+
+#User.delete_all
+
+#User.create!(name: 'admin', password: 'admin')
+
+#Category.delete_all
+
+#Category.create!(name: 'Products')
+
+#Category.create!(name: 'Books', parent_id: 1)
+
 Product.delete_all
 Product.create!(title: 'Rails, Angular, Postgres, and Bootstrap',
   description:
@@ -22,7 +37,7 @@ Product.create!(title: 'Rails, Angular, Postgres, and Bootstrap',
       environment.
       </p>},
   image_uid: "dcbang.jpg",
-  category_id: 1,
+  category_id: 2,
   price: 45.00)
 # . . .
 Product.create!(title: 'Seven Mobile Apps in Seven Weeks',
@@ -36,7 +51,7 @@ Product.create!(title: 'Seven Mobile Apps in Seven Weeks',
       out which cross-platform solution makes the most sense for your needs.
       </p>},
   image_uid: "7apps.jpg",
-  category_id: 1,
+  category_id: 2,
   price: 26.00)
 # . . .
 
@@ -54,5 +69,5 @@ Product.create!(title: 'Ruby Performance Optimization',
       will run orders of magnitude faster.
       </p>},
   image_uid: "adrpo.jpg",
-  category_id: 1,
+  category_id: 2,
   price: 46.00)
