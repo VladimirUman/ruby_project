@@ -57,11 +57,12 @@
           </a>
         </li>
         <li>
-          <% if @cart %>
-            <div id="korz">
+          <a href="#">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            <%= hidden_div_if(@cart.line_items.empty?, id: 'korz', class: 'badge') do %>
               <%= @cart.total_quantity %>
-            </div>
-          <% end %>
+            <% end %>
+          </a>
         </li>
       </ul>
     </div>

@@ -2,6 +2,8 @@ $('#notice').hide();
 
 if ($('#cart tr').length == 1) { $('#cart').show('blind', 100); }
 
+if ($('#cart tr').length == 1) { $('#korz').show('blind', 100); }
+
 $('#cart').html("<%=j render(@cart) %>");
 
 $('#korz').html("<%= @cart.total_quantity %>");
