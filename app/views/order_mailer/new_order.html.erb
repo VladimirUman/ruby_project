@@ -1,0 +1,13 @@
+<h1>Order#received</h1>
+
+<p>
+  <%= @greeting %>
+</p>
+
+Dear Admin,
+
+You have new order from <%= @order.name %>:
+
+<%= render @order.line_items -%>
+
+

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include CurrentCart
+  before_action :set_cart
 
   # GET /users
   # GET /users.json

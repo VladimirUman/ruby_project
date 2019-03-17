@@ -1,5 +1,7 @@
 class NewsItemsController < ApplicationController
   before_action :set_news_item, only: [:show, :edit, :update, :destroy]
+  include CurrentCart
+  before_action :set_cart
 
   # GET /news_items
   # GET /news_items.json

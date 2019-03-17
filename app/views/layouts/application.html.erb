@@ -14,68 +14,80 @@
 <body class="<%= controller.controller_name %>">
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to(image_tag('logo.jpg', alt: 'The Bookshelf', height: '50', width: '60'), store_index_path) %>
-    </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to(image_tag('logo.jpg', alt: 'The Bookshelf', height: '50', width: '60'), store_index_path) %>
+      </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-          <li><%= link_to t('.catalog'), store_index_path   %></li>
-          <li><%= link_to t('.news'), news_path   %></li>
-          <li><%= link_to t('.about'), about_path   %></li>
-          <li><%= link_to t('.contact'), contacts_path   %></li>
-          <%= form_tag search_path, method: :get, class: "navbar-form navbar-left" do %>
-              <div class="form-group">
-              <%= text_field_tag :search, params[:search], class: "form-control" %>
-              <%= submit_tag t('.search'), name: nil, class: "btn btn-default" %>
-              </div>
-            <% end %>
-        <% if session[:user_id] %>
-          <li><%= link_to 'Orders',   orders_path   %></li>
-          <li><%= link_to 'Products', products_path %></li>
-          <li><%= link_to 'Categories', categories_path %></li>
-          <li><%= link_to 'Add news', news_items_path   %></li>
-          <li><%= link_to 'Users',    users_path    %></li>
-        <% end %>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><%= link_to t('.catalog'), store_index_path   %></li>
+            <li><%= link_to t('.news'), news_path   %></li>
+            <li><%= link_to t('.about'), about_path   %></li>
+            <li><%= link_to t('.contact'), contacts_path   %></li>
+            <%= form_tag search_path, method: :get, class: "navbar-form navbar-left" do %>
+                <div class="form-group">
+                <%= text_field_tag :search, params[:search], class: "form-control" %>
+                <%= submit_tag t('.search'), name: nil, class: "btn btn-default" %>
+                </div>
+              <% end %>
           <% if session[:user_id] %>
-            <%= link_to 'Logout', logout_path, method: :delete %>
+            <li><%= link_to 'Orders',   orders_path   %></li>
+            <li><%= link_to 'Products', products_path %></li>
+            <li><%= link_to 'Categories', categories_path %></li>
+            <li><%= link_to 'Add news', news_items_path   %></li>
+            <li><%= link_to 'Users',    users_path    %></li>
           <% end %>
-        </li>
-        <li>
-          <a>
-            <%= form_tag store_index_path, class: 'locale' do %>
-              <%= select_tag('set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()') %>
-              <%= submit_tag 'submit' %>
-              <%= javascript_tag "$('.locale input').hide()" %>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if session[:user_id] %>
+              <%= link_to 'Logout', logout_path, method: :delete %>
+            <% else %>
+              <a data-toggle="modal" data-target="#cartModal">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                <%= hidden_div_if(@cart.total_quantity == 0, id: 'korz', class: 'badge') do %>
+                  <%= @cart.total_quantity %>
+                <% end %>
+              </a>  
             <% end %>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-            <%= hidden_div_if(@cart.line_items.empty?, id: 'korz', class: 'badge') do %>
-              <%= @cart.total_quantity %>
-            <% end %>
-          </a>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <a>
+              <%= form_tag store_index_path, class: 'locale' do %>
+                <%= select_tag('set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()') %>
+                <%= submit_tag 'submit' %>
+                <%= javascript_tag "$('.locale input').hide()" %>
+              <% end %>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="banner">
+    <span class="title"><%= @page_title %></span>
+  </div>
+
+  <div id="main">
+    <%= yield %>
+  </div>
+
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        <div class="modal-body" id="cart">
+          <%= render @cart %>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
-
-    <div id="banner">
-      <span class="title"><%= @page_title %></span>
-    </div>
-
-    <div id="main">
-      <%= yield %>
-    </div>
 
   </body>
 </html>
