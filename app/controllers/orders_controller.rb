@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
   include CurrentCart
-  before_action :set_cart#, only: [:new, :create]
+  before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: :new
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :users_email
 
   # GET /orders
   # GET /orders.json
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderMailer.received(@order).deliver_later
-        OrderMailer.new_order(@order).deliver_later
+        OrderMailer.new_order(@order, @emails).deliver_later
         format.html { redirect_to store_index_url, notice:
           I18n.t('.thanks') }
         format.json { render :show, status: :created,
@@ -86,9 +87,13 @@ class OrdersController < ApplicationController
   #...
 
   private
-     def ensure_cart_isnt_empty
-       if @cart.line_items.empty?
-         redirect_to store_index_url, notice: 'Your cart is empty'
-       end
-     end
+    def ensure_cart_isnt_empty
+      if @cart.line_items.empty?
+        redirect_to store_index_url, notice: 'Your cart is empty'
+      end
+    end
+
+    def users_email
+      @emails = User.all.map{|u| u.email }
+    end
 end

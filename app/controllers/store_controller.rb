@@ -57,5 +57,5 @@ class StoreController < ApplicationController
     def set_cat
       @category = Category.find(params[:id])
     end
-
+    
 end
