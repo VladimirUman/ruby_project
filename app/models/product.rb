@@ -23,13 +23,15 @@ class Product < ApplicationRecord
     end
   end
 
+  class Error < StandardError
+  end
+
   private
 
     # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item
       unless line_items.empty?
-        errors.add(:base, 'Line Items present')
-        throw :abort
+        raise Error.new "Line Items present"
       end
     end
 end
