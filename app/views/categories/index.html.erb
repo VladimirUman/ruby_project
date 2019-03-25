@@ -9,13 +9,13 @@
 <tr>
   <td width="5%"><%= image_tag(category.image.url, class: 'image') if category.image_stored? %></td>
   <td><strong><%= link_to category.name, category_path(category) %></strong></td>
-  <td width="5%"><%= link_to 'Edit', edit_category_path(category) unless category.parent_id.nil? %></td>
-  <td width="5%"><%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete unless category.parent_id.nil? %></td>
+  <td width="5%"><%= link_to 'Edit', edit_category_path(category) %></td>
+  <td width="5%"><%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
 <% end %>
 </table>
 <p>
-  <%= button_to('New category', new_category_path(@category), method: :get, class: "btn btn-info") unless @category.nil? %>
-  <%= link_to 'Back', @category.parent_id.nil? ? categories_path : category_path(@category.parent_id) unless @category.nil? %>
+  <%= button_to('New category', new_category_path(@parent), method: :get, class: "btn btn-info") %>
+  <%= link_to 'Back', @category.parent_id == 0 ? categories_path : category_path(@category.parent_id) unless @category.nil? %>
 </p>
 </div>
