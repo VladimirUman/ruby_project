@@ -9,7 +9,7 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_index_url(locale: params[:set_locale])
     else
-      @categories = Category.first.subcategories
+      @categories = Category.parent_categories
       if params[:sort]
         @products = Product.order(params[:sort]).page(params[:page]).per(9)
       else
@@ -22,7 +22,7 @@ class StoreController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @categories = Category.first.subcategories
+    @categories = Category.parent_categories
   end
 
   # GET /categories/1
@@ -31,7 +31,7 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_index_url(locale: params[:set_locale])
     else
-      @categories = Category.first.subcategories
+      @categories = Category.parent_categories
       if params[:sort]
         @products = Product.where(category_id: @category.id).order(params[:sort]).page(params[:page]).per(9)
       else
@@ -44,7 +44,7 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_index_url(locale: params[:set_locale])
     else
-      @categories = Category.first.subcategories
+      @categories = Category.parent_categories
       @products = Product.search(params[:search]).page(params[:page]).per(9)
     end
   end

@@ -43,14 +43,13 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @product.category_id = params[:category_id]
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
 
-        @products = Product.order(:title).page(params[:page]).per(15)
-        ActionCable.server.broadcast 'products', html: render_to_string('products/index', layout: false)
+        #@products = Product.order(:title).page(params[:page]).per(15)
+        #ActionCable.server.broadcast 'products', html: render_to_string('products/index', layout: false)
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -81,6 +80,6 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image, :price, :category_id)
+      params.require(:product).permit(:title, :description, :image, :price, :category_id, :remove_image)
     end
 end
