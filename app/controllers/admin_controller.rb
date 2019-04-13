@@ -5,4 +5,14 @@ class AdminController < ApplicationController
   def index
     @total_orders = Order.count
   end
+
+  #Cleanup unused image files
+  def clean
+    ApplicationRecord.cleanup
+    respond_to do |format|
+      format.html { redirect_to admin_url, notice: 'Images successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+  
 end

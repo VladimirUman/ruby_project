@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   resources :categories
   resources :news_items
   get 'admin' => 'admin#index'
+  post 'admin' => 'admin#clean'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
 
-  resources :users
+  resources :users  
   resources :products do
     get :who_bought, on: :member
   end

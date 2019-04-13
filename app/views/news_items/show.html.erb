@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag(@news_item.image.url, height: 200) if @news_item.image_stored? %>
+
 <p>
   <strong>Title:</strong>
   <%= @news_item.title %>
@@ -8,11 +10,6 @@
 <p>
   <strong>Description:</strong>
   <%= @news_item.description %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @news_item.image %>
 </p>
 
 <p>

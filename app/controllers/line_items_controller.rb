@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :destroy]
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -61,9 +61,16 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    product = Product.find(@line_item.product_id)
+    @line_item = @cart.delete_product(product)
+    if @line_item.quantity != 0
+      @line_item.save
+    else
+      @line_item.destroy
+    end
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to line_items_url }
+      format.js   { @current_item = @line_item, ( render :create ) }
       format.json { head :no_content }
     end
   end

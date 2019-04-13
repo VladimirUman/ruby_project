@@ -1,4 +1,6 @@
+<p id="notice"><%= notice %></p>
 <h1>Welcome</h1>
 <p> В процесі розробки </p>
 It's <%= Time.now %>
 We have <%= pluralize(@total_orders, "order") %>.
+<%= button_to 'Cleanup unused image files', action: "clean" %>
