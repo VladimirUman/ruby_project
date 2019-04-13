@@ -20,6 +20,6 @@
 /node_modules
 /yarn-error.log
 
-/public/system/dragonfly/development/*
+#/public/system/dragonfly/development/*
 
 .byebug_history

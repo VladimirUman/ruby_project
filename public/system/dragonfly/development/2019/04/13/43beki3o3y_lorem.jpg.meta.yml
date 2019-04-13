@@ -1,0 +1,4 @@
+---
+name: lorem.jpg
+model_class: NewsItem
+model_attachment: image
