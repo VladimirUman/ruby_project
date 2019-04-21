@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order_items = @order.line_items
   end
 
   # GET /orders/new
@@ -37,7 +38,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderMailer.received(@order).deliver_later
-        OrderMailer.new_order(@order, @emails).deliver_later
+        OrderMailer.new_order(@order, @admin_emails).deliver_later
         format.html { redirect_to store_index_url, notice:
           I18n.t('.thanks') }
         format.json { render :show, status: :created,
@@ -94,6 +95,6 @@ class OrdersController < ApplicationController
     end
 
     def users_email
-      @emails = User.all.map{|u| u.email }
+      @admin_emails = User.all.map{|u| u.email }
     end
 end

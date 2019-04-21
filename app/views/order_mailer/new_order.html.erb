@@ -8,6 +8,16 @@ Dear Admin,
 
 You have new order from <%= @order.name %>:
 
-<%= render @order.line_items -%>
+<p>
+  <table>
+    <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.quantity %></td>
+        <td><%= item.product.title %></td>
+        <td><%= number_to_currency(item.product.price) %></td>
+      </tr>
+    <% end %>
+  </table>     
+</p>
 
 

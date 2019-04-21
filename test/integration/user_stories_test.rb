@@ -24,7 +24,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
 
-    post '/line_items', params: { product_id: ruby_book.id }, xhr: true
+    post '/line_items', params: { product_id: line_item.ruby_book.id }, xhr: true
     assert_response :success
 
     cart = Cart.find(session[:cart_id])

@@ -20,5 +20,17 @@
   <%= @order.pay_type %>
 </p>
 
+<p>
+  <table class="table">
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.quantity %></td>
+        <td><%= item.product.title %></td>
+        <td><%= number_to_currency(item.product.price) %></td>
+      </tr>
+    <% end %>
+  </table>     
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

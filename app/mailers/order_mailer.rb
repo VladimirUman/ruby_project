@@ -11,10 +11,10 @@ class OrderMailer < ApplicationMailer
     mail to: order.email, subject: 'Pragmatic Store Order Confirmation'
   end
 
-  def new_order(order, emails)
+  def new_order(order, admin_emails)
     @order = order
-    @emails = emails
-    mail to: emails, subject: 'Pragmatic Store Order Confirmation'
+    @admin_emails = admin_emails
+    mail to: admin_emails, subject: 'New Order In The Store'
   end
 
 

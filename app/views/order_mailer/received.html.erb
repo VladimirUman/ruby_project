@@ -10,6 +10,16 @@ Thank you for your recent order from The Pragmatic Store.
 
 You ordered the following items:
 
-<%= render @order.line_items -%>
+<p>
+  <table>
+    <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.quantity %></td>
+        <td><%= item.product.title %></td>
+        <td><%= number_to_currency(item.product.price) %></td>
+      </tr>
+    <% end %>
+  </table>     
+</p>
 
 We'll send you a separate e-mail when your order ships.
