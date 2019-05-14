@@ -14,25 +14,9 @@
   <fieldset>
 
   <div class="form-group">
-    <%= form.label :image, class: "col-sm-1 control-label" %>
+    <%= form.label :product_images, class: "col-sm-1 control-label" %>
     <div class="col-sm-4">
-      <%= image_tag(product.image.url, height: 200) if product.image_stored? %>
-    </div>
-  </div>
-
-  <% if @product.image_stored? %>
-  <div class="form-group">
-    <%= form.label :remove, class: "col-sm-1 control-label" %>
-    <div class="col-sm-4">
-      <%= form.check_box :remove_image %>
-    </div>
-  </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= form.label :image_url, class: "col-sm-1 control-label" %>
-    <div class="col-sm-4">
-      <%= form.file_field :image %>
+      <%= form.file_field :images, :name => "images[]", multiple: true %>
     </div>
   </div>
 

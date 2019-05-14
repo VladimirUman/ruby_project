@@ -3,20 +3,20 @@
 <h1>Products</h1>
 
 <div class="col-md-10">
-<table class="table">
-<% @products.each do |product| %>
-<tr>
-  <td width="5%"><%= image_tag(product.image.url, class: 'image') if product.image_stored? %></td>
-  <td><strong><%= product.title %></strong></td>
-  <td width="15%"><%= Category.find(product.category_id).name %></td>
-  <td width="5%"><%= link_to 'Show', product %></td>
-  <td width="5%"><%= link_to 'Edit', edit_product_path(product) %><br/></td>
-  <td width="5%"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-</tr>
-<% end %>
-</table>
+  <table class="table">
+    <% @products.each do |product| %>
+      <tr>
+        <td width="5%"><%= image_tag(product.product_images[0].image.url, class: 'image') if product.product_images.length != 0 %></td>
+        <td><strong><%= product.title %></strong></td>
+        <td width="15%"><%= Category.find(product.category_id).name %></td>
+        <td width="5%"><%= link_to 'Show', product %></td>
+        <td width="5%"><%= link_to 'Edit', edit_product_path(product) %><br/></td>
+        <td width="5%"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
 
-<%= button_to 'New product', new_product_path, method: :get, class: "btn btn-info" %>
+  <%= button_to 'New product', new_product_path, method: :get, class: "btn btn-info" %>
 
 </div>
 

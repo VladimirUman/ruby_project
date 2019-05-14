@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @images = @product.product_images
   end
 
   # GET /products/new
@@ -20,6 +21,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @images = @product.product_images
     @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
@@ -27,10 +29,14 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
-
+    
     respond_to do |format|
       if @product.save
+        unless params[:images].nil?
+          params[:images].each do |image|
+            @product.product_images.create(image: image)
+          end
+        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -45,6 +51,11 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        unless params[:images].nil?
+          params[:images].each do |image|
+            @product.product_images.create(image: image)
+          end
+        end
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
 
@@ -80,6 +91,6 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image, :price, :category_id, :remove_image)
+      params.require(:product).permit(:title, :description, :price, :category_id)
     end
 end
