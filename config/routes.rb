@@ -13,15 +13,14 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  resources :users  
+    
   resources :products do
     get :who_bought, on: :member
   end
 
-  get 'about' => 'pages#about'
-  get 'contacts' => 'pages#contacts'
-  get 'news' => 'pages#news'
+  resources :product_images
 
+  
   scope '(:locale)' do
     resources :users
     resources :orders
@@ -30,7 +29,9 @@ Rails.application.routes.draw do
     root 'store#index', as: 'store_index', via: :all
     get '/product/:id', to: 'store#show', as: 'store'
     match '/category/:id', to: 'store#show_cat', as: 'store_cat', via: [:get, :post]
-      
+    get 'about' => 'pages#about'  
+    get 'contacts' => 'pages#contacts'
+    get 'news' => 'pages#news'
   end
 
 end

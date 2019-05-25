@@ -35,7 +35,7 @@ class ApplicationRecord < ActiveRecord::Base
       end
       
       file = File.join(image_root, item)
-      unless Product.find_by(image_uid: item_name) || Category.find_by(image_uid: item_name)  || NewsItem.find_by(image_uid: item_name)
+      unless ProductImage.find_by(image_uid: item_name) || Category.find_by(image_uid: item_name)  || NewsItem.find_by(image_uid: item_name)
         File.delete(file)
         begin
           File.delete(file + meta_ending)

@@ -21,9 +21,17 @@
   <strong><%= @product.title %></strong>
 </p>
 
-<p>
-  <%= image_tag(@product.image.url) if @product.image_stored? %>
-</p>
+<div class="images">
+  <% unless @images.empty? %>
+    <% @images.each do |image| %>
+      <div class="image">
+        <%= link_to image.image.url, data: { lightbox: "product_images" } do %>
+          <%= image_tag(image.image.url, height: 200) %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <p>
   <%= sanitize(@product.description) %>

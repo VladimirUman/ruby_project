@@ -49,7 +49,7 @@
               <%= link_to 'Logout', logout_path, method: :delete %>
             <% else %>
               <a data-toggle="modal" data-target="#cartModal">
-                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 20px;"></span>
                 <%= hidden_div_if(@cart.total_quantity == 0, id: 'korz', class: 'badge') do %>
                   <%= @cart.total_quantity %>
                 <% end %>
@@ -58,7 +58,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body" id="cart">
                       <%= render @cart %>
@@ -68,15 +68,8 @@
               </div>  
             <% end %>
           </li>
-          <li>
-            <a>
-              <%= form_tag store_index_path, class: 'locale' do %>
-                <%= select_tag('set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()') %>
-                <%= submit_tag 'submit' %>
-                <%= javascript_tag "$('.locale input').hide()" %>
-              <% end %>
-            </a>
-          </li>
+          <li><%= link_to 'Uk', url_for( locale: 'uk' ) %></li>
+          <li><%= link_to 'En', url_for( locale: 'en' ) %></li>
         </ul>
       </div>
     </div>

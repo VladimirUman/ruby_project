@@ -6,15 +6,11 @@ class StoreController < ApplicationController
   before_action :set_cart
 
   def index
-    if params[:set_locale]
-      redirect_to store_index_url(locale: params[:set_locale])
+    @categories = Category.parent_categories
+    if params[:sort]
+      @products = Product.order(params[:sort]).page(params[:page]).per(9)
     else
-      @categories = Category.parent_categories
-      if params[:sort]
-        @products = Product.order(params[:sort]).page(params[:page]).per(9)
-      else
-        @products = Product.order(:title).page(params[:page]).per(9)
-      end
+      @products = Product.order(:title).page(params[:page]).per(9)
     end
   end
 
@@ -23,30 +19,23 @@ class StoreController < ApplicationController
   # GET /products/1.json
   def show
     @categories = Category.parent_categories
+    @images = @product.product_images
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show_cat
-    if params[:set_locale]
-      redirect_to store_index_url(locale: params[:set_locale])
+    @categories = Category.parent_categories
+    if params[:sort]
+      @products = Product.where(category_id: @category.id).order(params[:sort]).page(params[:page]).per(9)
     else
-      @categories = Category.parent_categories
-      if params[:sort]
-        @products = Product.where(category_id: @category.id).order(params[:sort]).page(params[:page]).per(9)
-      else
-        @products = Product.where(category_id: @category.id).order(:title).page(params[:page]).per(9)
-      end
+      @products = Product.where(category_id: @category.id).order(:title).page(params[:page]).per(9)
     end
   end
 
   def search
-    if params[:set_locale]
-      redirect_to store_index_url(locale: params[:set_locale])
-    else
-      @categories = Category.parent_categories
-      @products = Product.search(params[:search]).page(params[:page]).per(9)
-    end
+    @categories = Category.parent_categories
+    @products = Product.search(params[:search]).page(params[:page]).per(9)
   end
 
   private

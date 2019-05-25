@@ -5,16 +5,11 @@ class Product < ApplicationRecord
   belongs_to :category
 
   before_destroy :ensure_not_referenced_by_any_line_item
-
+  
   validates :title, :description, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
-
   validates :title, uniqueness: true
-  #validates_property :mime_type, of: :image, in: %w(image/jpeg image/png image/gif)
-
   validates :title, :description, length: {minimum: 10}
-
-  #dragonfly_accessor :image
 
   def self.search(search)
     if search

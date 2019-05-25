@@ -36,7 +36,7 @@
 		      		<%= link_to store_path(product) do %>
 		            <div class="product-main">
 		              <div class="product-photo">
-		              	<%= image_tag(product.product_images[0].image.url) if product.product_images.length != 0 %>
+		              	<%= image_tag(product.product_images.first.image.url) unless product.product_images.empty? %>
 		              </div>
 		              <div class="product-text">
 		              	<h3><%= product.title %></h3>

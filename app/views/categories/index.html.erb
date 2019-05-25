@@ -7,7 +7,7 @@
 <table class="table">
 <% @categories.each do |category| %>
 <tr>
-  <td width="5%"><%= image_tag(category.image.url, class: 'image') if category.image_stored? %></td>
+  <td width="5%"><%= image_tag(category.image.url, class: 'image_icon') if category.image_stored? %></td>
   <td><strong><%= link_to category.name, category_path(category) %></strong></td>
   <td width="5%"><%= link_to 'Edit', edit_category_path(category) %></td>
   <td width="5%"><%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>

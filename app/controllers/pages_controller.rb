@@ -4,9 +4,6 @@ class PagesController < ApplicationController
   before_action :set_cart
 
   def about
-    if params[:set_locale]
-      redirect_to about_path(locale: params[:set_locale])
-    end
   end
 
   def contacts

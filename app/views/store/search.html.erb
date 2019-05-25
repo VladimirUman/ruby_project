@@ -14,14 +14,6 @@
 
 	<div id="products">
 		<div class="product-head">
-			<!-- <%= form_tag search_path, class: 'sort' do %>
-				<div class="form-group">
-				<%= label :sort, t('.sort') %>
-				<%= select_tag('sort', options_for_select([[t('.title'), 'title'], [t('.price'), 'price'], [t('.date'), 'created_at']], params[:sort]), onchange: 'this.form.submit()') %>
-				</div>
-				<%= submit_tag 'submit' %>
-				<%= javascript_tag "$('.sort input').hide()" %>
-			<% end %> -->
 			<div class="layout-buttons">
 				<span class="glyphicon glyphicon-th"></span>
 				<span class="glyphicon glyphicon-th-list disable"></span>
@@ -36,7 +28,7 @@
 		      		<%= link_to store_path(product) do %>
 		            <div class="product-main">
 		              <div class="product-photo">
-		              	<%= image_tag(product.image.url) if product.image_stored? %>
+		              	<%= image_tag(product.product_images.first.image.url) unless product.product_images.empty? %>
 		              </div>
 		              <div class="product-text">
 		              	<h3><%= product.title %></h3>

@@ -222,6 +222,15 @@
   }
 }
 
+.images {
+  margin: 20px 0 20px 0;
+}
+
+.image {
+  display: inline-block; 
+  margin-left: 10px;
+}
+
 @media all and (max-width: 800px) {
   #columns {
     flex-direction: column-reverse;
