@@ -27,16 +27,18 @@
             <li><%= link_to t('.about'), about_path   %></li>
             <li><%= link_to t('.contact'), contacts_path   %></li>
             <%= form_tag search_path, method: :get, class: "navbar-form navbar-left" do %>
-                <div class="form-group">
-                <%= text_field_tag :search, params[:search], class: "form-control" %>
-                <%= submit_tag t('.search'), name: nil, class: "btn btn-default" %>
+                <div class="input-group">
+                  <%= text_field_tag :search, params[:search], class: "form-control" %>
+                  <span class="input-group-btn">
+                    <%= submit_tag t('.search'), name: nil, class: "btn btn-default" %>
+                  </span>
                 </div>
               <% end %>
           <% if session[:user_id] %>
             <li><%= link_to 'Orders',   orders_path   %></li>
             <li><%= link_to 'Products', products_path %></li>
             <li><%= link_to 'Categories', categories_path %></li>
-            <li><%= link_to 'Add news', news_items_path   %></li>
+            <li><%= link_to 'News', news_items_path   %></li>
             <li><%= link_to 'Users',    users_path    %></li>
             <li><%= link_to 'Carts',    carts_path    %></li>
           <% end %>
@@ -45,35 +47,46 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <% if session[:user_id] %>
-              <%# <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> %>
-              <%= link_to 'Logout', logout_path, method: :delete %>
+              <%= link_to logout_path, method: :delete, title: 'Log out' do %>
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="font-size: 20px;"></span>
+              <% end %>
             <% else %>
               <a data-toggle="modal" data-target="#cartModal">
                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 20px;"></span>
-                <%= hidden_div_if(@cart.total_quantity == 0, id: 'korz', class: 'badge') do %>
+                <%= hidden_div_if(@cart.total_quantity == 0, id: 'cart-quantity', class: 'badge') do %>
                   <%= @cart.total_quantity %>
                 <% end %>
-              </a>
-              <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body" id="cart">
-                      <%= render @cart %>
-                    </div>
-                  </div>
-                </div>
-              </div>  
+              </a>  
             <% end %>
           </li>
-          <li><%= link_to 'Uk', url_for( locale: 'uk' ) %></li>
-          <li><%= link_to 'En', url_for( locale: 'en' ) %></li>
+          <li>
+            <ul class="locales">
+              <li class="locale<%= "-active" if params[:locale].nil? || params[:locale] == 'uk' %>">
+                <%= link_to 'UA', url_for( locale: 'uk' ) %>
+              </li>
+              <li class="locale<%= "-active" if params[:locale] == 'en' %>">
+                <%= link_to 'EN', url_for( locale: 'en' ) %>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Modal window for cart -->
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body" id="cart">
+          <%= render @cart %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="banner">
     <span class="title"><%= @page_title %></span>

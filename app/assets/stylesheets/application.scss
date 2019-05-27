@@ -30,6 +30,22 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
   }
 }
 
+.locales {
+  display: flex;
+  list-style: none;
+  padding: 15px 0 15px 5px;
+
+  .locale, .locale-active {
+    position: relative;
+    padding-left: 6px;
+    font-size: 90%;
+  }
+  .locale-active a {
+    pointer-events: none;
+    color: #999;
+  }
+}
+
 //pagination
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
