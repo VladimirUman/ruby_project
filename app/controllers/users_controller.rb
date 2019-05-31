@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+  include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:fogot_password, :change_password]
+  include CurrentCart
+  before_action :set_cart, only: [:fogot_password, :change_password]
 
   # GET /users
   # GET /users.json
@@ -63,6 +67,24 @@ class UsersController < ApplicationController
 
   rescue_from 'User::Error' do |exception|
     redirect_to users_url, notice: exception.message
+  end
+
+  # GET /fogot-password
+  def fogot_password
+    
+  end
+
+  # POST /fogot-password
+  def change_password
+    @user = User.find_by(email: params[:email])
+    if @user
+      new_password = random_password(10)
+      @user.update(password: new_password)
+      UserMailer.send_password(@user, new_password).deliver_later
+      redirect_to login_url, alert: 'Letter with new password is sended.'
+    else
+      redirect_to fogot_password_url, alert: "Invalid user e-mail"
+    end
   end
 
   private
