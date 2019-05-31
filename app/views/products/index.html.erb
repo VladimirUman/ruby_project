@@ -8,6 +8,7 @@
       <tr>
         <td width="5%"><%= image_tag(product.product_images.first.image.url, class: 'image_icon') unless product.product_images.empty? %></td>
         <td><strong><%= product.title %></strong></td>
+        <td width="10%"><%= product.price %></td>
         <td width="15%"><%= product.category.name %></td>
         <td width="5%"><%= link_to 'Show', product %></td>
         <td width="5%"><%= link_to 'Edit', edit_product_path(product) %><br/></td>

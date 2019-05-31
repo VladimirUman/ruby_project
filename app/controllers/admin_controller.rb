@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   def index
     @total_orders = Order.count
+    @total_users = ActionCable.server.connections.length
   end
 
   #Cleanup unused image files
