@@ -4,14 +4,12 @@
 one:
   title: Ruby Performance Optimization
   description: Ruby Performance Optimization
-  image_uid: dcbang.jpg
   price: 9.99
   category_id: 3
 
 two:
   title: MyString
   description: MyText
-  image_uid: dcbang.jpg
   price: 9.99
   category_id: 3
 
@@ -22,5 +20,4 @@ ruby:
     language out there.  If you need to get working programs
     delivered fast, you should add Ruby to your toolbox.
   price:       49.50
-  image_uid:   ruby.png
   category_id: 3

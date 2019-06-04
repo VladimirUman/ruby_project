@@ -11,17 +11,28 @@
     </div>
   <% end %>
 <fieldset>
-  <div class="form-group">
-    <%= form.label :name, class: "col-sm-1 control-label" %>
-    <div class="col-sm-4">
-    <%= form.text_field :name, class: "form-control" %>
-    </div>
-  </div>
 
   <div class="form-group">
     <%= form.label :image, class: "col-sm-1 control-label" %>
     <div class="col-sm-4">
+      <%= image_tag(category.image.url, class: 'image') if category.image_stored? %>
     <%= form.file_field :image %>
+    </div>
+  </div>
+
+  <% if category.image_stored? %>
+  <div class="form-group">
+    <%= form.label :remove_image, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= form.check_box :remove_image %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= form.text_field :name, class: "form-control" %>
     </div>
   </div>
 
@@ -29,7 +40,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-10">
-    <%= form.submit class: "btn btn-info" %>
+      <%= form.submit class: "btn btn-info" %>
     </div>
   </div>
   </fieldset>

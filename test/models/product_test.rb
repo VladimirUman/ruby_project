@@ -21,50 +21,25 @@ class ProductTest < ActiveSupport::TestCase
   test "product price must be positive" do
     product = Product.new(title:       "My Book Title",
                           description: "My Description",
-                          category_id: 2,
-                          image:   Rails.root + "/images/lorem.jpg")
+                          category_id: 2)
     product.price = -1
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["має бути більше ніж або дорівнювати 0.01"],
       product.errors[:price]
 
     product.price = 0
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["має бути більше ніж або дорівнювати 0.01"],
       product.errors[:price]
 
     product.price = 1
     assert product.valid?
   end
 
-  def new_product(image_file)
-    Product.new(title:       "My Book Title",
-                description: "My Description",
-                price:       1,
-                category_id: 2,
-                image:   image_file)
-  end
-
-  test "image url" do
-    ok = %w{ lorem.gif lorem.jpg lorem.png }
-    bad = %w{ lorem.doc lorem.txt lorem.avi }
-
-    ok.each do |name|
-      file = Rails.root + "/images/#{name}"
-      assert new_product(file).valid?, "#{name} shouldn't be invalid"
-    end
-
-    bad.each do |name|
-      file = Rails.root + "/images/#{name}"
-      assert new_product(file).invalid?, "#{name} shouldn't be valid"
-    end
-  end
-
   test "product title must be at least 10 characters long" do
     product = Product.new(title:       "Too short",
                           description: "My Description",
-                          price:       1,
-                          image:   "fred.gif")
+                          price:       1)
 
     assert product.invalid?
   end
@@ -72,8 +47,7 @@ class ProductTest < ActiveSupport::TestCase
   test "product is not valid without a unique title - i18n" do
     product = Product.new(title:       products(:ruby).title,
                           description: "yyy",
-                          price:       1,
-                          image:   "fred.gif")
+                          price:       1)
 
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')],
