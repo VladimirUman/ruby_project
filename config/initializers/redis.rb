@@ -1,2 +1,2 @@
-uri = URI.parse(ENV["REDISTOGO_URL"])
+uri = URI.parse('redis://safe-castle-59654.herokuapp.com:6379/1')
 REDIS = Redis.new(:url => uri)
