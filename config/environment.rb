@@ -14,6 +14,8 @@ Depot::Application.configure do
     password: "rtktwrfz112",
     enable_starttls_auto: true
   }
+
+  config.gem 'redis'
 end
 
 Time::DATE_FORMATS[:my_datetime] = "%d.%m.%Y %k:%M"
