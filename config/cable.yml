@@ -6,5 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: depot_production
+  url: redis://localhost:6379
