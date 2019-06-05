@@ -5,10 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production do
-  gem 'mysql2'
-end
-
 gem 'dragonfly', '~> 1.1.3'
 gem 'rack-cache', require: 'rack/cache', group: :production
 
