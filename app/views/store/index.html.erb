@@ -29,36 +29,36 @@
 		</div>
 		<ul class="wrapper">
 			<% cache @products do %>
-		    <% @products.each do |product| %>
-		      <% cache product do %>
-		      	<li class="product-wrapper">
-		          <div class="product">
-		      		<%= link_to store_path(product) do %>
-		            <div class="product-main">
-		              <div class="product-photo">
-		              	<%= image_tag(product.product_images.first.image.url) unless product.product_images.empty? %>
-		              </div>
-		              <div class="product-text">
-		              	<h3><%= product.title %></h3>
-		                <div class="description">
-		                <%= sanitize(product.description) %>
-		                </div>
-		              </div>
-		            </div>
-		          <% end %>
-		            <div class="product-details">
-		              <div class="product-price">
-		                <%= number_to_currency(product.price) %>
-		              </div>
-		              <div class="product-btn">
-		              	<%= button_to t('.add_html'), line_items_path(product_id: product), remote: true, class: "btn btn-info" %>
-		              </div>
-		            </div>
-		          </div>
-		        </li>
-		      <% end %>
-		    <% end %>
-		  <% end %>
+				<% @products.each do |product| %>
+					<% cache product do %>
+						<li class="product-wrapper">
+							<div class="product">
+								<div class="product-main">
+								<%= link_to store_path(product) do %>
+									<div class="product-photo">
+										<%= image_tag(product.product_images.first.image.url) unless product.product_images.empty? %>
+									</div>
+									<div class="product-text">
+										<h3><%= product.title %></h3>
+										<div class="description">
+											<%= sanitize(product.description) %>
+										</div>
+									</div>
+								<% end %>
+								</div>
+								<div class="product-details">
+									<div class="product-price">
+										<%= number_to_currency(product.price) %>
+									</div>
+									<div class="product-btn">
+										<%= button_to t('.add_html'), line_items_path(product_id: product), remote: true, class: "btn btn-info" %>
+									</div>
+								</div>
+							</div>
+						</li>
+					<% end %>
+				<% end %>
+		  	<% end %>
 		</ul>
 		<div class="pg">
 			<%= paginate @products %>
