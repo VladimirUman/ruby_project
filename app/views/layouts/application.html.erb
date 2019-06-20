@@ -59,18 +59,8 @@
               </a>
               <!-- Modal window for cart -->
               <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h3 class="modal-title"><%= t('.cart') %></h3>
-                    </div>
-                    <div class="modal-body" id="cart">
-                      <%= render @cart %>
-                    </div>
-                  </div>
-                </div>
-              </div> 
+                <%= render @cart %>
+              </div>
             <% end %>
           </li>
           <li>

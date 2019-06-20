@@ -61,9 +61,7 @@ class ProductsController < ApplicationController
 
         @products = Product.order(:title).page(params[:page]).per(15)
         @categories = Category.parent_categories
-        #@images = @product.product_images
         ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
-        #ActionCable.server.broadcast 'products', html: render_to_string('store/show', layout: false)
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }

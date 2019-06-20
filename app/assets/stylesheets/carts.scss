@@ -2,24 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.carts, #side #cart {
+.carts, #cartModal {
   .item_price, .total_line {
     text-align: right;
   }
 
   .total_line .total_cell {
     font-weight: bold;
-    border-top: 1px solid #595;
   }
 
   .cart-buttons {
-    float: left;
-    margin-right: 3p
+    margin-right: 3px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .cart-buttons div {
     text-align: center;
-    display: inline-block;
-    width: 48%;
   }
 }
