@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'dragonfly', '~> 1.1.3'
+gem 'dragonfly', '~> 1.4.0'
 gem 'rack-cache', require: 'rack/cache', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
